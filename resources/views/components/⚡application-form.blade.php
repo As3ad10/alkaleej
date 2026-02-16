@@ -2,9 +2,10 @@
 
 use App\Models\Course;
 use Livewire\Component;
+use App\Models\Application;
 use App\Models\Institution;
-use App\Enums\InstitutionAttributeTypeEnum;
 use Illuminate\Support\Collection;
+use App\Enums\InstitutionAttributeTypeEnum;
 
 new class extends Component {
     public string $fullname = '';
@@ -13,7 +14,7 @@ new class extends Component {
     public ?int $course_id = null;
     public ?string $period = null;
     public ?int $institution_id = null;
-    public array $institutionAttributes = [];
+    public array $institution_attributes = [];
 
     public Collection $courses;
     public Collection $institutions;
@@ -22,7 +23,7 @@ new class extends Component {
     {
         $this->courses = Course::active()->get();
         $this->institutions = Institution::active()
-            ->with(['attributes' => fn ($query) => $query->active()])
+            ->with(['attributes' => fn($query) => $query->active()])
             ->get();
     }
 
@@ -42,7 +43,7 @@ new class extends Component {
 
     public function updatedInstitutionId($value)
     {
-        $this->institutionAttributes = [];
+        $this->institution_attributes = [];
     }
 
     public function getSelectedInstitutionProperty(): ?Institution
@@ -54,7 +55,7 @@ new class extends Component {
         return $this->institutions->firstWhere('id', (int) $this->institution_id);
     }
 
-    public function getInstitutionAttributesSchemaProperty(): \Illuminate\Support\Collection
+    public function getinstitutionAttributesSchemaProperty(): \Illuminate\Support\Collection
     {
         return $this->selectedInstitution?->attributes?->values() ?? collect();
     }
@@ -78,10 +79,12 @@ new class extends Component {
                 continue;
             }
 
-            $rules["institutionAttributes.{$attribute->id}"] = 'required';
+            $rules["institution_attributes.{$attribute->name}"] = 'required';
         }
 
-        $this->validate($rules);
+        $data = $this->validate($rules);
+
+        Application::create($data);
     }
 };
 ?>
@@ -105,19 +108,25 @@ new class extends Component {
         </flux:field>
         <flux:field>
             <flux:label>{{ __('Courses') }}</flux:label>
-            <flux:select wire:model.live="course_id" placeholder="{{ __('Select course') }}">
+            <flux:select wire:model.live="course_id">
+                <flux:select.option value="" selected>
+                    {{ __('Select option') }}
+                </flux:select.option>
                 @foreach ($courses as $course)
                     <flux:select.option value="{{ $course->id }}">{{ $course->name }} ({{ $course->price }}
                         {{ __('SAR') }})</flux:select.option>
                 @endforeach
             </flux:select>
-            <flux:error name="courses" />
+            <flux:error name="course_id" />
         </flux:field>
 
         @if ($course_id && count($this->coursePeriods) > 0)
             <flux:field>
                 <flux:label>{{ __('Course period') }}</flux:label>
-                <flux:select wire:model="period" placeholder="{{ __('Select period') }}">
+                <flux:select wire:model="period">
+                    <flux:select.option value="" selected>
+                        {{ __('Select option') }}
+                    </flux:select.option>
                     @foreach ($this->coursePeriods as $periodOption)
                         <flux:select.option value="{{ $periodOption }}">{{ $periodOption }}</flux:select.option>
                     @endforeach
@@ -128,7 +137,10 @@ new class extends Component {
 
         <flux:field>
             <flux:label>{{ __('Institutions') }}</flux:label>
-            <flux:select wire:model.live="institution_id" placeholder="{{ __('Select institution') }}">
+            <flux:select wire:model.live="institution_id">
+                <flux:select.option value="" selected>
+                    {{ __('Select option') }}
+                </flux:select.option>
                 @foreach ($institutions as $institution)
                     <flux:select.option value="{{ $institution->id }}">{{ $institution->name }}</flux:select.option>
                 @endforeach
@@ -148,28 +160,30 @@ new class extends Component {
 
                     @switch($attribute->type)
                         @case(InstitutionAttributeTypeEnum::TEXT)
-                            <flux:input wire:model="institutionAttributes.{{ $attribute->id }}" />
+                            <flux:input wire:model="institution_attributes.{{ $attribute->name }}" />
                         @break
 
                         @case(InstitutionAttributeTypeEnum::DATE)
-                            <flux:input type="date" wire:model="institutionAttributes.{{ $attribute->id }}" />
+                            <flux:input type="date" wire:model="institution_attributes.{{ $attribute->name }}" />
                         @break
 
                         @case(InstitutionAttributeTypeEnum::TEXTAREA)
-                            <flux:textarea wire:model="institutionAttributes.{{ $attribute->id }}" rows="3" />
+                            <flux:textarea wire:model="institution_attributes.{{ $attribute->name }}" rows="3" />
                         @break
 
                         @case(InstitutionAttributeTypeEnum::SELECT)
-                            <flux:select wire:model="institutionAttributes.{{ $attribute->id }}"
-                                placeholder="{{ __('Select option') }}">
-                                @foreach (($attribute->options ?? []) as $option)
+                            <flux:select wire:model="institution_attributes.{{ $attribute->name }}">
+                                <flux:select.option value="" selected>
+                                    {{ __('Select option') }}
+                                </flux:select.option>
+                                @foreach ($attribute->options ?? [] as $option)
                                     <flux:select.option value="{{ $option }}">{{ $option }}</flux:select.option>
                                 @endforeach
                             </flux:select>
                         @break
                     @endswitch
 
-                    <flux:error name="institutionAttributes.{{ $attribute->id }}" />
+                    <flux:error name="institution_attributes.{{ $attribute->name }}" />
                 </flux:field>
             @endforeach
         @endif
