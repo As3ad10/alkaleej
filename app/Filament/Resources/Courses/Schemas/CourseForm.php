@@ -16,20 +16,24 @@ class CourseForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label(__('Course Name'))
                     ->required(),
                 TextInput::make('price')
+                    ->label(__('Course Price'))
                     ->required()
                     ->numeric()
                     ->default(0.0)
                     ->prefix('SAR'),
                 FileUpload::make('image')
+                    ->label(__('Image'))
                     ->image()
                     ->directory('courses')
                     ->disk('public'),
                 Textarea::make('periods')
+                    ->label(__('Course Duration'))
                     ->default(null)
                     ->rows(3)
-                    ->helperText('ضع كل خيار في كل سطر منفصل')
+                    ->helperText(__('Enter every option in a new line'))
                     ->dehydrateStateUsing(function ($state) {
                         if (blank($state)) {
                             return [];
@@ -49,9 +53,11 @@ class CourseForm
                         return $state;
                     }),
                 RichEditor::make('description')
+                    ->label(__('Course Description'))
                     ->default(null)
                     ->columnSpanFull(),
                 Toggle::make('status')
+                    ->label(__('Status'))
                     ->required(),
             ]);
     }

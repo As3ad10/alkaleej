@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\Institutions\Tables;
 
+use Filament\Tables\Table;
+use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 
 class InstitutionsTable
 {
@@ -16,17 +16,16 @@ class InstitutionsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->label(__('Institution Name')),
                 IconColumn::make('status')
-                    ->boolean(),
+                    ->boolean()
+                    ->label(__('Institution Status')),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label(__('Created At')),
             ])
             ->filters([
                 //

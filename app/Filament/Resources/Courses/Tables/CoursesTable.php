@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\Courses\Tables;
 
+use Filament\Tables\Table;
+use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 
 class CoursesTable
 {
@@ -17,21 +17,21 @@ class CoursesTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('Course Name'))
                     ->searchable(),
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->label(__('Image')),
                 TextColumn::make('price')
-                    ->money()
-                    ->sortable(),
+                    ->sortable()
+                    ->label(__('Course Price')),
                 IconColumn::make('status')
-                    ->boolean(),
+                    ->boolean()
+                    ->label(__('Status')),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label(__('Created At')),
             ])
             ->filters([
                 //

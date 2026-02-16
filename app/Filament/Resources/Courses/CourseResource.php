@@ -2,23 +2,33 @@
 
 namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Courses\Pages\CreateCourse;
+use BackedEnum;
+use App\Models\Course;
+use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
 use App\Filament\Resources\Courses\Pages\EditCourse;
 use App\Filament\Resources\Courses\Pages\ListCourses;
+use App\Filament\Resources\Courses\Pages\CreateCourse;
 use App\Filament\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Resources\Courses\Tables\CoursesTable;
-use App\Models\Course;
-use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
 
 class CourseResource extends Resource
 {
     protected static ?string $model = Course::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    public static function getModelLabel(): string
+    {
+        return __('Course');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Courses');
+    }
 
     public static function form(Schema $schema): Schema
     {

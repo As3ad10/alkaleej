@@ -17,6 +17,7 @@ class InstitutionForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label(__('Institution Name'))
                     ->required(),
                 Toggle::make('status')
                     ->label(__('Status'))
