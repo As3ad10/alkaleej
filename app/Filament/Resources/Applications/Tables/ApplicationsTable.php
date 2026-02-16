@@ -8,6 +8,7 @@ use Filament\Actions\ViewAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 
 class ApplicationsTable
 {
@@ -46,6 +47,12 @@ class ApplicationsTable
             ])
             ->recordActions([
                 ViewAction::make(),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exports([
+                        \pxlrbt\FilamentExcel\Exports\ExcelExport::make('table')->fromTable(),
+                    ]),
             ]);
     }
 }
