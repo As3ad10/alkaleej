@@ -13,7 +13,8 @@ class Application extends Model
         'fullname',
         'id_number',
         'phone_number',
-        'institution_attributes'
+        'institution_attributes',
+        'pdf',
     ];
 
     protected $casts = [

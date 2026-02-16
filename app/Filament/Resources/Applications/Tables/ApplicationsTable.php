@@ -31,6 +31,11 @@ class ApplicationsTable
                 TextColumn::make('phone_number')
                     ->label(__("Phone number"))
                     ->searchable(),
+                TextColumn::make('institution_attributes')
+                    ->label(__("Additional info")),
+                TextColumn::make('pdf')
+                    ->label(__("PDF"))
+                    ->url(fn($record) => $record->pdf, true),
                 TextColumn::make('created_at')
                     ->label(__("Created at"))
                     ->dateTime('d/m/Y h:m a')

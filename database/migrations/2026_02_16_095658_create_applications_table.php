@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('id_number');
             $table->string('phone_number');
             $table->json('institution_attributes')->nullable();
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }

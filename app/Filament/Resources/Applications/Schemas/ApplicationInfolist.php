@@ -28,6 +28,9 @@ class ApplicationInfolist
                     ->label(__("Additional info"))
                     ->placeholder('-')
                     ->columnSpanFull(),
+                TextEntry::make('pdf')
+                    ->label(__("PDF"))
+                    ->url(fn($record) => $record->pdf, true),
                 TextEntry::make('created_at')
                     ->label(__("Created at"))
                     ->dateTime('d/m/Y h:m a')
