@@ -2,7 +2,9 @@
 
 namespace App\Enums;
 
-enum InstitutionAttributeTypeEnum: string
+use Filament\Support\Contracts\HasLabel;
+
+enum InstitutionAttributeTypeEnum: string implements HasLabel
 {
     case TEXT = 'text';
     case DATE = 'date';
@@ -19,7 +21,7 @@ enum InstitutionAttributeTypeEnum: string
         };
     }
 
-    public function label(): string
+    public function getLabel(): string
     {
         return match ($this) {
             self::TEXT => __('Text Input'),
