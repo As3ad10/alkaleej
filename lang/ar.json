@@ -28,5 +28,16 @@
     "Text Input": "نص",
     "Date Input": "تاريخ",
     "Textarea Input": "نص متعدد السطور",
-    "Select Input": "اختيار"
+    "Select Input": "اختيار",
+    "Home": "الرئيسية",
+    "About": "عنا",
+    "Contact": "تواصل معنا",
+    "All rights reserved.": "جميع الحقوق محفوظة.",
+    "Fullname": "الاسم الكامل",
+    "ID number": "رقم الهوية",
+    "Phone number": "رقم الهاتف",
+    "SAR": "ريال سعودي",
+    "Course period": "فترة الدورة",
+    "Select period": "اختر الفترة",
+    "Select option": "اختر خياراً"
 }
