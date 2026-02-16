@@ -11,16 +11,6 @@ enum InstitutionAttributeTypeEnum: string implements HasLabel
     case TEXTAREA = 'textarea';
     case SELECT = 'select';
 
-    public function input()
-    {
-        return match ($this) {
-            self::TEXT => \Filament\Forms\Components\TextInput::make('text'),
-            self::DATE => \Filament\Forms\Components\DatePicker::make('date'),
-            self::TEXTAREA => \Filament\Forms\Components\Textarea::make('textarea'),
-            self::SELECT => \Filament\Forms\Components\Select::make('select'),
-        };
-    }
-
     public function getLabel(): string
     {
         return match ($this) {
