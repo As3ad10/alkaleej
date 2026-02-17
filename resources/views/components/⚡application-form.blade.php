@@ -69,7 +69,7 @@ new class extends Component {
         $rules = [
             'fullname' => 'required|string|max:255',
             'id_number' => 'required|string|max:20|regex:/^\d+$/',
-            'phone_number' => 'required|digits:10|regex:/^05\d{8}$/',
+            'phone_number' => 'required',
             'course_id' => 'required|integer',
             'institution_id' => 'required|integer',
         ];
@@ -98,6 +98,8 @@ new class extends Component {
             ]);
 
             $application->update(['pdf' => $this->pdf]);
+
+            \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $application->pdf);
 
             $this->isSubmitted = true;
         } catch (\Throwable $th) {

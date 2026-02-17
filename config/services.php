@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'textmebot' => [
+        'apikey' => env('TEXTMEBOT_API_KEY', 'm7VPgGHmnNVL'),
+        'recipient' => env('TEXTMEBOT_RECIPIENT'),
+        'base_url' => env('TEXTMEBOT_BASE_URL', 'http://api.textmebot.com/send.php'),
+    ],
 ];
