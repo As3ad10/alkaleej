@@ -36,7 +36,7 @@ class TextMeBotWhatsappService implements WhatsappService
         $response = Http::post($this->endpoint, [
             'recipient' => $phone,
             'apikey'    => $this->apiKey,
-            'file'      => $fileUrl,
+            'document'      => $fileUrl,
         ]);
 
         return [
