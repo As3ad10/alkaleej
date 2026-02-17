@@ -38,6 +38,8 @@ class SendWhatsappDocumentJob implements ShouldQueue
 
         if (! $sent['success']) {
             throw new \Exception('WhatsApp sending failed: ' . $sent['body'], $sent['status_code']);
+        } else {
+            Log::info('whatsapp sent successfully: ' . $sent['body']);
         }
     }
 
