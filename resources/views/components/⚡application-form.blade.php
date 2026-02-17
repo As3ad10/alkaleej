@@ -99,7 +99,7 @@ new class extends Component {
 
             $application->update(['pdf' => $this->pdf]);
 
-            \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $application->pdf);
+            \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $this->pdf);
 
             $this->isSubmitted = true;
         } catch (\Throwable $th) {
@@ -131,7 +131,7 @@ new class extends Component {
             </flux:field>
             <flux:field>
                 <flux:label>{{ __('Phone number') }}</flux:label>
-                <flux:input type="tel" wire:model="phone_number" />
+                <flux:input type="tel" wire:model="phone_number" default="05" />
                 <flux:error name="phone_number" />
             </flux:field>
             <flux:field>

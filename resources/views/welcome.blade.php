@@ -40,7 +40,7 @@
 
                 <p><strong>لضمان الموثوقية:</strong></p>
                 <ol>
-                    <li>الموظف المسؤول: [الاسم]</li>
+                    <li>الموظف المسؤول: [سالم الكثيري]</li>
                     <li>البريد الإلكتروني الرسمي: [<a
                             href="mailto:salem.alkatheri@newhorizons.com.sa">salem.alkatheri@newhorizons.com.sa</a>]
                     </li>
