@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('pdf_text')->nullable();
+            $table->json('titles')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

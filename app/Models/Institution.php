@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Institution extends Model
 {
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'pdf_text', 'titles', 'status'];
 
     protected $casts = [
+        'titles' => 'array',
         'status' => 'boolean',
     ];
 

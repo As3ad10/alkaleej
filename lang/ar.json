@@ -44,5 +44,7 @@
     "Application": "شهادة",
     "Applications": "الشهائد",
     "Additional info": "معلومات اضافية",
-    "Your application has been submitted successfully.": "تم ارسال بياناتك بنجاح. "
+    "Your application has been submitted successfully.": "تم ارسال بياناتك بنجاح. ",
+    "Pdf text": "نص ملف الpdf",
+    "Job titles": "الرتب / الألقاب"
 }

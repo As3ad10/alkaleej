@@ -23,6 +23,34 @@ class InstitutionForm
                     ->label(__('Status'))
                     ->inline(false)
                     ->default(true),
+                Textarea::make('pdf_text')
+                    ->label(__('Pdf text'))
+                    ->required()
+                    ->rows(3)
+                    ->helperText('مثال: سعادة/ مدير إدارة التدريب للقوات البرية'),
+                Textarea::make('titles')
+                    ->label(__('Job titles'))
+                    ->required()
+                    ->rows(3)
+                    ->helperText(__('Enter every option in a new line'))
+                    ->dehydrateStateUsing(function ($state) {
+                        if (blank($state)) {
+                            return [];
+                        }
+                        return collect(preg_split('/\r\n|\r|\n/', $state))
+                            ->map(fn($line) => trim($line))
+                            ->filter()
+                            ->values()
+                            ->toArray();
+                    })
+                    ->formatStateUsing(function ($state) {
+                        // Convert array back to textarea string when editing
+                        if (is_array($state)) {
+                            return implode(PHP_EOL, $state);
+                        }
+
+                        return $state;
+                    }),
                 Repeater::make('attributes')
                     ->label(__('Attributes'))
                     ->columnSpanFull()
