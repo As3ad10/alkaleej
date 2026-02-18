@@ -10,7 +10,6 @@
     <link rel="apple-touch-icon" href="/favicon.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @fluxAppearance
 </head>
 
 <body class="min-h-screen bg-white text-zinc-500 antialiased">
@@ -35,8 +34,7 @@
             </flux:navbar>
         </flux:header>
 
-        <flux:sidebar sticky collapsible="mobile"
-            class="z-50 border-r border-zinc-200 bg-zinc-50 lg:hidden dark:border-zinc-700 dark:bg-zinc-900">
+        <flux:sidebar sticky collapsible="mobile" class="z-50 border-r border-zinc-200 bg-zinc-50 lg:hidden">
             <flux:sidebar.header>
                 <a href="/" class="h-16"><img src="{{ asset('logo.png') }}" alt="logo"
                         class="object-contain object-center"></a>
