@@ -10,6 +10,7 @@ class Application extends Model
         'course_id',
         'institution_id',
         'period',
+        'title',
         'fullname',
         'id_number',
         'phone_number',

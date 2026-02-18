@@ -19,6 +19,8 @@ class ApplicationsTable
                 TextColumn::make('fullname')
                     ->label(__("Fullname"))
                     ->searchable(),
+                TextColumn::make('title')
+                    ->label(__("Job title")),
                 TextColumn::make('course.name')
                     ->label(__("Course Name")),
                 TextColumn::make('institution.name')

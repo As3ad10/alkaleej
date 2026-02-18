@@ -5,6 +5,7 @@ use Livewire\Component;
 use App\Models\Application;
 use App\Models\Institution;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use App\Enums\InstitutionAttributeTypeEnum;
 
 new class extends Component {
@@ -14,6 +15,8 @@ new class extends Component {
     public ?int $course_id = null;
     public ?string $period = null;
     public ?int $institution_id = null;
+    public ?string $title = null;
+
     public array $institution_attributes = [];
     public bool $isSubmitted = false;
     public ?string $pdf = null;
@@ -78,6 +81,10 @@ new class extends Component {
             $rules['period'] = 'required|string';
         }
 
+        if ($this->institution_id && $this->selectedInstitution) {
+            $rules['title'] = 'required|string';
+        }
+
         foreach ($this->institutionAttributesSchema as $attribute) {
             if (!($attribute->is_required ?? false)) {
                 continue;
@@ -95,15 +102,19 @@ new class extends Component {
                 'id_number' => $application->id_number,
                 'period' => $application->period,
                 'course' => $application->course->name,
+                'title' => $application->title,
+                'greeting' => $application->institution->pdf_text,
             ]);
 
             $application->update(['pdf' => $this->pdf]);
 
-            \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $this->pdf);
+            if (app()->environment('production')) {
+                \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $this->pdf);
+            }
 
             $this->isSubmitted = true;
         } catch (\Throwable $th) {
-            //throw $th;
+            Log::error('form not submitted: ' . $th->message);
         }
     }
 };
@@ -176,6 +187,22 @@ new class extends Component {
                 </flux:select>
                 <flux:error name="institution_id" />
             </flux:field>
+
+            @if ($institution_id && $this->selectedInstitution)
+                <flux:field>
+                    <flux:label>{{ __('Job title') }}</flux:label>
+                    <flux:select wire:model="title">
+                        <flux:select.option value="" selected>
+                            {{ __('Select option') }}
+                        </flux:select.option>
+                        @foreach ($this->selectedInstitution->titles as $title)
+                            <flux:select.option value="{{ $title }}">{{ $title }}
+                            </flux:select.option>
+                        @endforeach
+                    </flux:select>
+                    <flux:error name="title" />
+                </flux:field>
+            @endif
 
             @if ($institution_id && $this->institutionAttributesSchema->count() > 0)
                 @foreach ($this->institutionAttributesSchema as $attribute)

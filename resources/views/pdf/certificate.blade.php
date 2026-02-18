@@ -58,40 +58,38 @@
             style="flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: start;">
 
             <div style="width: 100%; text-align:right">
-                <div style="font-weight: normal; margin-top: 10px;">الموضوع: مشهد قبول دورة
-                    تدريبية</div>
+                <div style="font-weight: normal; margin-top: 10px;">الموضوع: مشهد قبول </div>
                 <div style="height: 10px"></div>
             </div>
 
             <div
                 style="display: flex; flex-direction: column; justify-content: space-around; flex: 1; align-items: center; width: 80%;">
 
-                {{-- <div>
-                    {{ $student->department->certificate_text }}
-                </div> --}}
+                <div>
+                    {{ $greeting }}
+                </div>
 
                 <div class="big-text" style="font-weight: bold;">السلام عليكم ورحمة اللّٰه وبركاته ،،،،،،، وبعد:
                 </div>
 
                 <div class="flex gap-2">
-                    <div>نفيد سعادتكم بأنه تواصل معنا </div>
-                    {{-- <div>{{ $student_level }}</div> --}}
-                    {{-- <div>/</div> --}}
-                    <div>{{ $fullname }}</div>
-                    <div> هوية رقم</div>
-                    <div>({{ $id_number }})</div>
+                    <p>نفيد سعادتكم بأنه تواصل معنا {{ $title }} /
+                        <span style="font-weight: bold">{{ $fullname }}</span>
+                        هوية رقم
+                        <span style="font-weight: bold">({{ $id_number }})</span>
+                    </p>
                 </div>
 
                 <div class="flex gap-2">
-                    <div>يرغب بالالتحاق لدينا في دورة</div>
-                    <div style="font-weight: bold">{{ $course }}</div>
+                    يرغب بالالتحاق لدينا في دورة
+                    {{ $course }}
                 </div>
 
                 <div>وذلك خلال الفترة (المسائية)</div>
 
                 <div class="flex gap-1">
-                    <div>علماً بان الدورة ستكون خلال الفترة: </div>
-                    <div>{{ $period }}</div>
+                    علماً بان الدورة ستكون خلال الفترة:
+                    <span style="font-weight: bold">{{ $period }}</span>
                 </div>
 
                 <div>بشركة الخليج للتدريب والتعليم</div>

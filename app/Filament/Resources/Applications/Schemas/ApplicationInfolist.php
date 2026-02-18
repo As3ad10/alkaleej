@@ -12,7 +12,8 @@ class ApplicationInfolist
         return $schema
             ->components([
                 TextEntry::make('fullname')
-                    ->label(__("Fullname")),
+                    ->label(__("Fullname"))
+                    ->formatStateUsing(fn($record) => $record->title . '/ ' . $record->fullname),
                 TextEntry::make('course.name')
                     ->label(__("Course Name")),
                 TextEntry::make('institution.name')
