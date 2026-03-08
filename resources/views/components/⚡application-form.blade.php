@@ -11,7 +11,7 @@ use App\Enums\InstitutionAttributeTypeEnum;
 new class extends Component {
     public string $fullname = '';
     public string $id_number = '';
-    public string $phone_number = '';
+    public string $phone_number = '05';
     public ?int $course_id = null;
     public ?string $period = null;
     public ?int $institution_id = null;
@@ -72,7 +72,7 @@ new class extends Component {
         $rules = [
             'fullname' => 'required|string|max:255',
             'id_number' => 'required|string|max:20|regex:/^\d+$/',
-            'phone_number' => 'required',
+            'phone_number' => 'required|string|regex:/^05[0-9]{8}$/',
             'course_id' => 'required|integer',
             'institution_id' => 'required|integer',
         ];
@@ -142,7 +142,7 @@ new class extends Component {
             </flux:field>
             <flux:field>
                 <flux:label>{{ __('Phone number') }}</flux:label>
-                <flux:input type="tel" wire:model="phone_number" default="05" />
+                <flux:input type="tel" wire:model="phone_number" placeholder="05XXXXXXXX" />
                 <flux:error name="phone_number" />
             </flux:field>
             <flux:field>
