@@ -27,6 +27,9 @@
                 <flux:navbar.item href="{{ route('certificate-request') }}"> <span
                         class="text-white">{{ __('Certificate Request') }}</span>
                 </flux:navbar.item>
+                <flux:navbar.item href="{{ route('payment-request') }}"> <span
+                        class="text-white">{{ __('Payment Request') }}</span>
+                </flux:navbar.item>
                 <flux:navbar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank" class="text-white">
                     <span class="text-white">{{ __('About') }}</span>
@@ -47,6 +50,8 @@
             <flux:sidebar.nav>
                 <flux:sidebar.item href="{{ route('welcome') }}"> {{ __('Home') }} </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('certificate-request') }}"> {{ __('Certificate Request') }}
+                </flux:sidebar.item>
+                <flux:sidebar.item href="{{ route('payment-request') }}"> {{ __('Payment Request') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank">

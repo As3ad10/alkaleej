@@ -49,5 +49,17 @@
     "Job titles": "الرتب / الألقاب",
     "Job title": "الرتبة / اللقب",
     "Certificate Request": "طلب اصدار شهادة",
-    "Certificate Requests": "طلبات اصدار شهادات"
+    "Certificate Requests": "طلبات اصدار شهادات",
+    "Payment Request": "طلب استكمال الدفع",
+    "Payment Requests": "طلبات استكمال الدفع",
+    "Payment Method": "طريقة الدفع",
+    "Bank Transfer": "حوالة بنكية / مصرفية",
+    "Tamara": "تامارا",
+    "Tabby": "تابي",
+    "New Payment Request": "جديد",
+    "Pending Payment Request": "قيد التواصل",
+    "Completed Payment Request": "مكتمل",
+    "Cancelled Payment Request": "ملغي",
+    "Payment Status": "حالة الطلب",
+    "Change Payment Status": "تعديل حالة الطلب"
 }
