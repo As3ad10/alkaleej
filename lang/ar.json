@@ -41,11 +41,13 @@
     "Course period": "فترة الدورة",
     "Select period": "اختر الفترة",
     "Select option": "اختر خياراً",
-    "Application": "شهادة",
-    "Applications": "الشهائد",
+    "Application": "طلب مشهد قبول",
+    "Applications": "طلبات اصدار مشهد قبول",
     "Additional info": "معلومات اضافية",
     "Your application has been submitted successfully.": "تم ارسال بياناتك بنجاح. ",
     "Pdf text": "نص ملف الpdf",
     "Job titles": "الرتب / الألقاب",
-    "Job title": "الرتبة / اللقب"
+    "Job title": "الرتبة / اللقب",
+    "Certificate Request": "طلب اصدار شهادة",
+    "Certificate Requests": "طلبات اصدار شهادات"
 }

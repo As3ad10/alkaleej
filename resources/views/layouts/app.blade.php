@@ -22,7 +22,10 @@
                     class="h-8 lg:h-16"></a>
             <flux:spacer />
             <flux:navbar class="-mb-px max-lg:hidden">
-                <flux:navbar.item href="/" current> <span class="text-white">{{ __('Home') }}</span>
+                <flux:navbar.item href="{{ route('welcome') }}"> <span class="text-white">{{ __('Home') }}</span>
+                </flux:navbar.item>
+                <flux:navbar.item href="{{ route('certificate-request') }}"> <span
+                        class="text-white">{{ __('Certificate Request') }}</span>
                 </flux:navbar.item>
                 <flux:navbar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank" class="text-white">
@@ -42,7 +45,9 @@
                     class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
             </flux:sidebar.header>
             <flux:sidebar.nav>
-                <flux:sidebar.item href="/" current> {{ __('Home') }} </flux:sidebar.item>
+                <flux:sidebar.item href="{{ route('welcome') }}"> {{ __('Home') }} </flux:sidebar.item>
+                <flux:sidebar.item href="{{ route('certificate-request') }}"> {{ __('Certificate Request') }}
+                </flux:sidebar.item>
                 <flux:sidebar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank">
                     {{ __('About') }}
