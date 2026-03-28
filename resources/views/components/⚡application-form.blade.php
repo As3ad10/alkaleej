@@ -109,7 +109,14 @@ new class extends Component {
             $application->update(['pdf' => $this->pdf]);
 
             if (app()->environment('production')) {
-                \App\Jobs\SendWhatsappDocumentJob::dispatch($application->phone_number, $this->pdf);
+                \App\Jobs\SendWhatsappDocumentJob::dispatch(
+                    $application->phone_number,
+                    $this->pdf,
+                    '"موافقتك جاهزة، وإذا وصلت الموافقة النهائية، تواصل معي علشان نكمل باقي الإجراءات.
+                        وسعدت بخدمتك، وأتمنى لك التوفيق!
+                        أخوكم سالم الكثيري
+                        معهد الخليج"',
+                );
             }
 
             $this->isSubmitted = true;

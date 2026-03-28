@@ -2,16 +2,15 @@
 
 namespace App\Jobs;
 
-use Throwable;
-use Illuminate\Bus\Queueable;
 use App\Contracts\WhatsappService;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
-class SendWhatsappDocumentJob implements ShouldQueue
+class SendWhatsappTextJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -19,39 +18,28 @@ class SendWhatsappDocumentJob implements ShouldQueue
     public int $timeout = 20;
 
     protected string $phone;
-    protected string $fileUrl;
     protected string $message;
 
-    public function __construct(string $phone, string $fileUrl, string $message)
+    public function __construct(string $phone, string $message)
     {
         $this->phone = $phone;
-        $this->fileUrl = $fileUrl;
         $this->message = $message;
+
         $this->onQueue('default');
         $this->delay(now()->addSeconds(rand(5, 15)));
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(WhatsappService $whatsapp): void
     {
-        $sent = $whatsapp->sendDocument(
-            $this->phone,
-            $this->fileUrl,
-            $this->message
-        );
+        $sent = $whatsapp->sendText($this->phone, $this->message);
 
         if (! $sent['success']) {
             throw new \Exception('WhatsApp sending failed: ' . $sent['body'], $sent['status_code']);
         } else {
             Log::info('whatsapp sent successfully: ' . $sent['body']);
         }
-    }
-
-    public function failed(Throwable $exception): void
-    {
-        // Optional: log or notify admin
-        Log::error('WhatsApp Job Failed', [
-            'phone' => $this->phone,
-            'error' => $exception->getMessage(),
-        ]);
     }
 }

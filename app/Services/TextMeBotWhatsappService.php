@@ -33,7 +33,7 @@ class TextMeBotWhatsappService implements WhatsappService
         ];
     }
 
-    public function sendDocument(string $phone, string $fileUrl): array
+    public function sendDocument(string $phone, string $fileUrl, string $message = ''): array
     {
         $phone = $this->normalizePhone($phone);
 
@@ -41,6 +41,7 @@ class TextMeBotWhatsappService implements WhatsappService
             'recipient' => $phone,
             'apikey'    => $this->apiKey,
             'document'  => $fileUrl,
+            'text'   => $message,
         ]);
 
         return [

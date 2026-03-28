@@ -73,6 +73,10 @@ new class extends Component {
         try {
             $paymentRequest = PaymentRequest::create($data);
 
+            if (app()->environment('production') && $paymentRequest->payment_method === PaymentMethodsEnum::BANK_TRANSFER->value) {
+                SendWhatsappTextJob::dispatch('966500303750', "طلب استكمال الدفع جديد من {$paymentRequest->fullname} ({$paymentRequest->id_number}) للدورة {$paymentRequest->course->name}.");
+            }
+
             $this->isSubmitted = true;
         } catch (\Throwable $th) {
             Log::error('form not submitted: ' . $th->message);
