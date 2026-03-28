@@ -2,17 +2,18 @@
 
 namespace App\Filament\Resources\Institutions;
 
-use BackedEnum;
-use Filament\Tables\Table;
-use App\Models\Institution;
-use Filament\Schemas\Schema;
-use Filament\Resources\Resource;
-use Filament\Support\Icons\Heroicon;
+use App\Filament\Resources\Institutions\Pages\CreateInstitution;
 use App\Filament\Resources\Institutions\Pages\EditInstitution;
 use App\Filament\Resources\Institutions\Pages\ListInstitutions;
-use App\Filament\Resources\Institutions\Pages\CreateInstitution;
 use App\Filament\Resources\Institutions\Schemas\InstitutionForm;
 use App\Filament\Resources\Institutions\Tables\InstitutionsTable;
+use App\Models\Institution;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+use UnitEnum;
 
 class InstitutionResource extends Resource
 {
@@ -30,6 +31,13 @@ class InstitutionResource extends Resource
         return __('Institutions');
     }
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Advanced');
+    }
 
     public static function form(Schema $schema): Schema
     {

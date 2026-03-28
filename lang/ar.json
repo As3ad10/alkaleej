@@ -61,5 +61,11 @@
     "Completed Payment Request": "مكتمل",
     "Cancelled Payment Request": "ملغي",
     "Payment Status": "حالة الطلب",
-    "Change Payment Status": "تعديل حالة الطلب"
+    "Change Payment Status": "تعديل حالة الطلب",
+    "New Payment Requests": "طلبات  دفع جديدة",
+    "Pending Payment Requests": "طلبات  دفع قيد التواصل",
+    "Completed Payment Requests": "طلبات  دفع مكتملة",
+    "Cancelled Payment Requests": "طلبات  دفع ملغية",
+    "Basic": "أساسي",
+    "Advanced": "متقدم"
 }

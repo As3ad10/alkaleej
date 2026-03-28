@@ -15,6 +15,7 @@ use App\Filament\Resources\Applications\Pages\CreateApplication;
 use App\Filament\Resources\Applications\Schemas\ApplicationForm;
 use App\Filament\Resources\Applications\Tables\ApplicationsTable;
 use App\Filament\Resources\Applications\Schemas\ApplicationInfolist;
+use UnitEnum;
 
 class ApplicationResource extends Resource
 {
@@ -24,6 +25,7 @@ class ApplicationResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?int $navigationSort = 2;
 
     public static function getModelLabel(): string
     {
@@ -33,6 +35,11 @@ class ApplicationResource extends Resource
     public static function getPluralModelLabel(): string
     {
         return __('Applications');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Basic');
     }
 
     public static function infolist(Schema $schema): Schema

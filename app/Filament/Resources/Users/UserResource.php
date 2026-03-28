@@ -2,26 +2,29 @@
 
 namespace App\Filament\Resources\Users;
 
-use BackedEnum;
-use App\Models\User;
-use Filament\Tables\Table;
-use Filament\Schemas\Schema;
-use Filament\Actions\EditAction;
-use Filament\Resources\Resource;
-use Filament\Actions\DeleteAction;
-use Filament\Support\Icons\Heroicon;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\Users\Pages\ManageUsers;
+use App\Models\User;
+use BackedEnum;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use UnitEnum;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
+
+    protected static ?int $navigationSort = 3;
 
     public static function getModelLabel(): string
     {
@@ -31,6 +34,11 @@ class UserResource extends Resource
     public static function getPluralModelLabel(): string
     {
         return __('Users');
+    }
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('Advanced');
     }
 
     public static function form(Schema $schema): Schema
