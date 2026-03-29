@@ -67,5 +67,7 @@
     "Completed Payment Requests": "طلبات  دفع مكتملة",
     "Cancelled Payment Requests": "طلبات  دفع ملغية",
     "Basic": "أساسي",
-    "Advanced": "متقدم"
+    "Advanced": "متقدم",
+    "Application Request": "طلب اصدار مشهد قبول",
+    "Application Requests": "طلبات اصدار مشهد قبول"
 }

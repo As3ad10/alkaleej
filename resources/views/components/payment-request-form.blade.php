@@ -20,6 +20,7 @@ new class extends Component {
     public ?string $title = null;
     public ?string $payment_method = null;
 
+    public bool $is_agreed_to_terms = false;
     public bool $isSubmitted = false;
 
     public Collection $courses;
@@ -62,6 +63,7 @@ new class extends Component {
             'institution_id' => 'required|integer',
             'period' => 'required|string|max:100',
             'payment_method' => 'required|string|in:' . implode(',', array_map(fn($case) => $case->value, PaymentMethodsEnum::cases())),
+            'is_agreed_to_terms' => 'required|boolean|accepted',
         ];
 
         if ($this->institution_id && $this->selectedInstitution) {
@@ -73,7 +75,7 @@ new class extends Component {
         try {
             $paymentRequest = PaymentRequest::create($data);
 
-            if (app()->environment('production') && $paymentRequest->payment_method === PaymentMethodsEnum::BANK_TRANSFER->value) {
+            if (app()->environment('production') && $paymentRequest->payment_method === PaymentMethodsEnum::BANK_TRANSFER) {
                 SendWhatsappTextJob::dispatch('966500303750', "طلب استكمال الدفع جديد من {$paymentRequest->fullname} ({$paymentRequest->id_number}) للدورة {$paymentRequest->course->name}.");
             }
 
@@ -93,25 +95,25 @@ new class extends Component {
     @else
         <form wire:submit="submit" class="flex flex-col gap-4">
             <flux:field>
-                <flux:label>{{ __('Fullname') }}</flux:label>
+                <flux:label class="text-white">{{ __('Fullname') }}</flux:label>
                 <flux:input wire:model="fullname" />
                 <flux:error name="fullname" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('ID number') }}</flux:label>
+                <flux:label class="text-white">{{ __('ID number') }}</flux:label>
                 <flux:input wire:model="id_number" />
                 <flux:error name="id_number" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Phone number') }}</flux:label>
+                <flux:label class="text-white">{{ __('Phone number') }}</flux:label>
                 <flux:input type="tel" wire:model="phone_number" placeholder="05XXXXXXXX" />
                 <flux:error name="phone_number" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Course') }}</flux:label>
+                <flux:label class="text-white">{{ __('Course') }}</flux:label>
                 <flux:select wire:model.live="course_id">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
@@ -125,13 +127,13 @@ new class extends Component {
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Course period') }}</flux:label>
+                <flux:label class="text-white">{{ __('Course period') }}</flux:label>
                 <flux:input wire:model="period" />
                 <flux:error name="period" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Institutions') }}</flux:label>
+                <flux:label class="text-white">{{ __('Institutions') }}</flux:label>
                 <flux:select wire:model.live="institution_id">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
@@ -146,7 +148,7 @@ new class extends Component {
 
             @if ($institution_id && $this->selectedInstitution)
                 <flux:field>
-                    <flux:label>{{ __('Job title') }}</flux:label>
+                    <flux:label class="text-white">{{ __('Job title') }}</flux:label>
                     <flux:select wire:model="title">
                         <flux:select.option value="" selected>
                             {{ __('Select option') }}
@@ -161,7 +163,7 @@ new class extends Component {
             @endif
 
             <flux:field>
-                <flux:label>{{ __('Payment Method') }}</flux:label>
+                <flux:label class="text-white">{{ __('Payment Method') }}</flux:label>
                 <flux:select wire:model="payment_method">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
@@ -173,6 +175,13 @@ new class extends Component {
                 </flux:select>
                 <flux:error name="payment_method" />
             </flux:field>
+
+            <flux:field variant="inline">
+                <flux:checkbox wire:model="is_agreed_to_terms" />
+                <flux:label class="text-white">اقر بانه قد تمت صدور الموافقة وان جميع البيانات صحيحة</flux:label>
+                <flux:error name="is_agreed_to_terms" />
+            </flux:field>
+
             <flux:button type="submit" variant="primary" color="accent">
                 ارسال
             </flux:button>

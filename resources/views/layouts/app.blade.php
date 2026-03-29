@@ -24,6 +24,9 @@
             <flux:navbar class="-mb-px max-lg:hidden">
                 <flux:navbar.item href="{{ route('welcome') }}"> <span class="text-white">{{ __('Home') }}</span>
                 </flux:navbar.item>
+                <flux:navbar.item href="{{ route('application-request') }}"> <span
+                        class="text-white">{{ __('Application Request') }}</span>
+                </flux:navbar.item>
                 <flux:navbar.item href="{{ route('certificate-request') }}"> <span
                         class="text-white">{{ __('Certificate Request') }}</span>
                 </flux:navbar.item>
@@ -49,6 +52,8 @@
             </flux:sidebar.header>
             <flux:sidebar.nav>
                 <flux:sidebar.item href="{{ route('welcome') }}"> {{ __('Home') }} </flux:sidebar.item>
+                <flux:sidebar.item href="{{ route('application-request') }}"> {{ __('Application Request') }}
+                </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('certificate-request') }}"> {{ __('Certificate Request') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('payment-request') }}"> {{ __('Payment Request') }}
