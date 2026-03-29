@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PaymentRequests\Tables;
 
+use Alkoumi\LaravelHijriDate\Hijri;
 use App\Enums\PaymentMethodsEnum;
 use App\Enums\PaymentRequestStatusEnum;
 use Filament\Actions\Action;
@@ -21,7 +22,6 @@ class PaymentRequestsTable
     {
         return $table
             ->columns([
-
                 TextColumn::make('fullname')
                     ->label(__("Fullname"))
                     ->searchable(),
@@ -52,7 +52,7 @@ class PaymentRequestsTable
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__("Created at"))
-                    ->dateTime(format: 'd/m/Y h:m a', timezone: 'Asia/Riyadh')
+                    ->state(fn($record) => Hijri::Date('j F Y', $record->created_at))
                     ->sortable(),
             ])
             ->filters([
@@ -82,6 +82,7 @@ class PaymentRequestsTable
                     ->exports([
                         \pxlrbt\FilamentExcel\Exports\ExcelExport::make('table')->fromTable(),
                     ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 }

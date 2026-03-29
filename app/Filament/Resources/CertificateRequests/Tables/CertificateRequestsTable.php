@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CertificateRequests\Tables;
 
+use Alkoumi\LaravelHijriDate\Hijri;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -35,7 +36,7 @@ class CertificateRequestsTable
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__("Created at"))
-                    ->dateTime(format: 'd/m/Y h:m a', timezone: 'Asia/Riyadh')
+                    ->state(fn($record) => Hijri::Date('j F Y', $record->created_at))
                     ->sortable(),
             ])
             ->filters([
@@ -46,6 +47,7 @@ class CertificateRequestsTable
                     ->exports([
                         \pxlrbt\FilamentExcel\Exports\ExcelExport::make('table')->fromTable(),
                     ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 }
