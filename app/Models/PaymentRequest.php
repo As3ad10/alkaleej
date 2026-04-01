@@ -37,4 +37,13 @@ class PaymentRequest extends Model
     {
         return $this->belongsTo(PaymentRequestStatus::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->payment_request_status_id = 1;
+        });
+    }
 }

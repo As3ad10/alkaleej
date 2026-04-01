@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('id_number');
             $table->string('phone_number');
             $table->foreignId('payment_method_id')->constrained('payment_methods')->onDelete('cascade');
-            $table->foreignId('payment_request_status_id')->constrained('payment_request_statuses')->onDelete('cascade')->default(1);
+            $table->foreignId('payment_request_status_id')->constrained('payment_request_statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }
