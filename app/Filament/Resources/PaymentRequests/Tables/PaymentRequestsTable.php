@@ -72,7 +72,7 @@ class PaymentRequestsTable
                 Action::make('change_status')
                     ->label(__("Change Payment Status"))
                     ->modalWidth('md')
-                    ->visible(fn() => Auth::user()->can('update', PaymentRequest::class))
+                    ->visible(fn() => Auth::user()->can('update'))
                     ->authorize('update')
                     ->schema([
                         Select::make('payment_request_status_id')
