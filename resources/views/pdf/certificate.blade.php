@@ -55,7 +55,7 @@
 
         <!-- Main Title Card -->
         <div class="content-a4"
-            style="flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: start;">
+            style="flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
 
             <div style="width: 100%; text-align:right">
                 <div style="font-weight: normal; margin-top: 10px;">الموضوع: مشهد قبول </div>
@@ -63,7 +63,7 @@
             </div>
 
             <div
-                style="display: flex; flex-direction: column; justify-content: space-around; flex: 1; align-items: center; width: 80%;">
+                style="display: flex; flex-direction: column; justify-content: center; flex: 1; align-items: center; width: 100%;">
 
                 <div>
                     {{ $greeting }}
@@ -110,8 +110,8 @@
         </div>
 
         <!-- Stamp -->
-        <div style="padding: 0 0 4px 0; display: flex; justify-content: center; width: 70%">
-            <img src="{{ asset('pdf-images/stamp.png') }}" style="width: 100%; border-radius: 10px;" alt="stamp">
+        <div style="padding: 40px 0 4px 0; display: flex; justify-content: center; width: 100%">
+            <img src="{{ asset('pdf-images/stamp.png') }}" style="width: 70%; border-radius: 10px;" alt="stamp">
         </div>
     </div>
 

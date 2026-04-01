@@ -29,8 +29,7 @@
                 <div
                     class="bg-card border-card-line border-t-accent shadow-2xs flex flex-col rounded-xl border border-t-4">
                     <img class="h-auto w-full rounded-t-xl sm:rounded-se-none"
-                        src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
-                        alt="Card Image">
+                        src="{{ asset('images/application-request.jpeg') }}" loading="lazy" alt="Card Image">
                     <div class="flex flex-col gap-2 p-4 md:p-5">
                         <h3 class="text-xl font-semibold text-slate-800">
                             طلب اصدار مشهد قبول
@@ -53,8 +52,7 @@
                 <div
                     class="bg-card border-card-line border-t-accent shadow-2xs flex flex-col rounded-xl border border-t-4">
                     <img class="h-auto w-full rounded-t-xl sm:rounded-se-none"
-                        src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
-                        alt="Card Image">
+                        src="{{ asset('images/certificate-request.jpeg') }}" loading="lazy" alt="Card Image">
                     <div class="flex flex-col gap-2 p-4 md:p-5">
                         <h3 class="text-xl font-semibold text-slate-800">
                             طلب اصدار شهادة
@@ -77,8 +75,7 @@
                 <div
                     class="bg-card border-card-line border-t-accent shadow-2xs flex flex-col rounded-xl border border-t-4">
                     <img class="h-auto w-full rounded-t-xl sm:rounded-se-none"
-                        src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
-                        alt="Card Image">
+                        src="{{ asset('images/payment-request.jpeg') }}" loading="lazy" alt="Card Image">
                     <div class="flex flex-col gap-2 p-4 md:p-5">
                         <h3 class="text-xl font-semibold text-slate-800">
                             طلب استكمال الدفع

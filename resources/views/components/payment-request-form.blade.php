@@ -90,7 +90,8 @@ new class extends Component {
 <div>
     @if ($isSubmitted)
         <div class="mb-4 rounded border border-green-200 bg-green-50 p-4 text-sm text-green-800">
-            {{ __('Your application has been submitted successfully.') }}
+            تم تأكيد طلبك لاستكمال الدفع
+            وفريقنا سيتولى خدمتك والتواصل معك مباشرة
         </div>
     @else
         <form wire:submit="submit" class="flex flex-col gap-4">
