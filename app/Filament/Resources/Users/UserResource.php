@@ -10,6 +10,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -17,6 +18,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use UnitEnum;
+use App\Models\Role;
 
 class UserResource extends Resource
 {
@@ -38,7 +40,7 @@ class UserResource extends Resource
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {
-        return __('Advanced');
+        return __('Settings');
     }
 
     public static function form(Schema $schema): Schema
@@ -56,6 +58,10 @@ class UserResource extends Resource
                     ->label(__('Password'))
                     ->password()
                     ->required(),
+                Select::make('role')
+                    ->label(__('Role'))
+                    ->options(\Spatie\Permission\Models\Role::all()->pluck('name', 'name')->toArray())
+                    ->required(),
             ]);
     }
 
@@ -69,6 +75,9 @@ class UserResource extends Resource
                 TextColumn::make('email')
                     ->label(__('Email address'))
                     ->searchable(),
+                TextColumn::make('role')
+                    ->label(__('Role'))
+                    ->state(fn(User $record): string => $record->getRoleNames()->first()),
                 TextColumn::make('created_at')
                     ->label(__('Created at'))
                     ->dateTime()
@@ -80,7 +89,6 @@ class UserResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

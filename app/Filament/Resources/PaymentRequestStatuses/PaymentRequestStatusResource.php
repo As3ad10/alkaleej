@@ -43,7 +43,7 @@ class PaymentRequestStatusResource extends Resource
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {
-        return __('Settings');
+        return __('Advanced');
     }
 
     public static function form(Schema $schema): Schema
@@ -85,7 +85,6 @@ class PaymentRequestStatusResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

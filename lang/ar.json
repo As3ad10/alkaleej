@@ -79,5 +79,6 @@
     "Payment Request Status Name": "اسم حالة طلب الدفع",
     "Payment Request Status Color": "اللون",
     "Payment Request Status Status": "تنشيط؟",
-    "Settings": "الإعدادات"
+    "Settings": "الإعدادات",
+    "Role": "الدور"
 }

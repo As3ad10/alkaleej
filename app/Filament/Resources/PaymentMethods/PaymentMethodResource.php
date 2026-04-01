@@ -43,7 +43,7 @@ class PaymentMethodResource extends Resource
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {
-        return __('Settings');
+        return __('Advanced');
     }
 
     public static function form(Schema $schema): Schema
@@ -86,7 +86,6 @@ class PaymentMethodResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make(),
             ]);
     }
 

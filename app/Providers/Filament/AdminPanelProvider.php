@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\PaymentRequestsStatsOverview;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -68,6 +69,9 @@ class AdminPanelProvider extends PanelProvider
                 __('Basic'),
                 __('Advanced'),
                 __('Settings'),
+            ])
+            ->plugins([
+                FilamentShieldPlugin::make(),
             ]);
     }
 }

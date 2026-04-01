@@ -6,6 +6,7 @@ use Alkoumi\LaravelHijriDate\Hijri;
 use App\Enums\PaymentMethodsEnum;
 use App\Enums\PaymentRequestStatusEnum;
 use App\Models\PaymentMethod;
+use App\Models\PaymentRequest;
 use App\Models\PaymentRequestStatus;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
@@ -17,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
 
 class PaymentRequestsTable
@@ -70,6 +72,8 @@ class PaymentRequestsTable
                 Action::make('change_status')
                     ->label(__("Change Payment Status"))
                     ->modalWidth('md')
+                    ->visible(fn() => Auth::user()->can('update', PaymentRequest::class))
+                    ->authorize('update', PaymentRequest::class)
                     ->schema([
                         Select::make('payment_request_status_id')
                             ->options(PaymentRequestStatus::active()->get()->pluck('name', 'id'))

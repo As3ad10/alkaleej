@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Policies;
+
+use Illuminate\Foundation\Auth\User as AuthUser;
+use App\Models\Institution;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class InstitutionPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(AuthUser $authUser): bool
+    {
+        return $authUser->can('ViewAny:Institution');
+    }
+
+    public function view(AuthUser $authUser, Institution $institution): bool
+    {
+        return $authUser->can('View:Institution');
+    }
+
+    public function create(AuthUser $authUser): bool
+    {
+        return $authUser->can('Create:Institution');
+    }
+
+    public function update(AuthUser $authUser, Institution $institution): bool
+    {
+        return $authUser->can('Update:Institution');
+    }
+
+    public function delete(AuthUser $authUser, Institution $institution): bool
+    {
+        return $authUser->can('Delete:Institution');
+    }
+
+}
