@@ -5,11 +5,14 @@ namespace App\Filament\Resources\PaymentRequests\Tables;
 use Alkoumi\LaravelHijriDate\Hijri;
 use App\Enums\PaymentMethodsEnum;
 use App\Enums\PaymentRequestStatusEnum;
+use App\Models\PaymentMethod;
+use App\Models\PaymentRequestStatus;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
+use Filament\Support\Colors\Color;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
@@ -40,15 +43,15 @@ class PaymentRequestsTable
                 TextColumn::make('phone_number')
                     ->label(__("Phone number"))
                     ->searchable(),
-                TextColumn::make('payment_method')
+                TextColumn::make('paymentMethod.name')
                     ->label(__("Payment Method"))
                     ->badge()
-                    ->color(fn($record) => $record->payment_method->getColor())
+                    ->color(fn($record) => Color::hex($record->paymentMethod->color))
                     ->searchable(),
-                TextColumn::make('status')
+                TextColumn::make('paymentRequestStatus.name')
                     ->label(__("Payment Status"))
                     ->badge()
-                    ->color(fn($record) => $record->status->getColor())
+                    ->color(fn($record) => Color::hex($record->paymentRequestStatus->color))
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__("Created at"))
@@ -56,11 +59,11 @@ class PaymentRequestsTable
                     ->sortable(),
             ])
             ->filters([
-                SelectFilter::make('status')
-                    ->options(PaymentRequestStatusEnum::class)
+                SelectFilter::make('payment_request_status_id')
+                    ->options(PaymentRequestStatus::all()->pluck('name', 'id'))
                     ->label(__("Payment Status")),
-                SelectFilter::make('payment_method')
-                    ->options(PaymentMethodsEnum::class)
+                SelectFilter::make('payment_method_id')
+                    ->options(PaymentMethod::all()->pluck('name', 'id'))
                     ->label(__("Payment Method")),
             ], layout: FiltersLayout::AboveContent)
             ->recordActions([
@@ -68,12 +71,12 @@ class PaymentRequestsTable
                     ->label(__("Change Payment Status"))
                     ->modalWidth('md')
                     ->schema([
-                        Select::make('status')
-                            ->options(PaymentRequestStatusEnum::class)
+                        Select::make('payment_request_status_id')
+                            ->options(PaymentRequestStatus::active()->get()->pluck('name', 'id'))
                             ->label(__("Payment Status")),
                     ])
                     ->action(function ($record, array $data) {
-                        $record->status = $data['status'];
+                        $record->payment_request_status_id = $data['payment_request_status_id'];
                         $record->save();
                     }),
             ])

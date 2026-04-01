@@ -69,5 +69,15 @@
     "Basic": "أساسي",
     "Advanced": "متقدم",
     "Application Request": "طلب اصدار مشهد قبول",
-    "Application Requests": "طلبات اصدار مشهد قبول"
+    "Application Requests": "طلبات اصدار مشهد قبول",
+    "Payment Methods": "طرق الدفع",
+    "Payment Method Name": "اسم طريقة الدفع",
+    "Payment Method Color": "اللون",
+    "Payment Method Status": "تنشيط؟",
+    "Payment Request Statuses": "حالات طلبات الدفع",
+    "Payment Request Status": "حالة طلب الدفع",
+    "Payment Request Status Name": "اسم حالة طلب الدفع",
+    "Payment Request Status Color": "اللون",
+    "Payment Request Status Status": "تنشيط؟",
+    "Settings": "الإعدادات"
 }

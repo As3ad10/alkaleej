@@ -1,10 +1,10 @@
 <?php
 
 use App\Enums\InstitutionAttributeTypeEnum;
-use App\Enums\PaymentMethodsEnum;
 use App\Models\CertificateRequest;
 use App\Models\Course;
 use App\Models\Institution;
+use App\Models\PaymentMethod;
 use App\Models\PaymentRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -18,7 +18,7 @@ new class extends Component {
     public ?string $period = null;
     public ?int $institution_id = null;
     public ?string $title = null;
-    public ?string $payment_method = null;
+    public ?int $payment_method_id = null;
 
     public bool $is_agreed_to_terms = false;
     public bool $isSubmitted = false;
@@ -62,7 +62,7 @@ new class extends Component {
             'course_id' => 'required|integer',
             'institution_id' => 'required|integer',
             'period' => 'required|string|max:100',
-            'payment_method' => 'required|string|in:' . implode(',', array_map(fn($case) => $case->value, PaymentMethodsEnum::cases())),
+            'payment_method_id' => 'required|integer|exists:payment_methods,id',
             'is_agreed_to_terms' => 'required|boolean|accepted',
         ];
 
@@ -75,13 +75,13 @@ new class extends Component {
         try {
             $paymentRequest = PaymentRequest::create($data);
 
-            if (app()->environment('production') && $paymentRequest->payment_method === PaymentMethodsEnum::BANK_TRANSFER) {
+            if (app()->environment('production') && $paymentRequest->payment_method_id === 1) {
                 SendWhatsappTextJob::dispatch('966500303750', "طلب استكمال الدفع جديد من {$paymentRequest->fullname} ({$paymentRequest->id_number}) للدورة {$paymentRequest->course->name}.");
             }
 
             $this->isSubmitted = true;
-        } catch (\Throwable $th) {
-            Log::error('form not submitted: ' . $th->message);
+        } catch (\Exception $th) {
+            Log::error('form not submitted: ' . $th->getMessage());
         }
     }
 };
@@ -165,16 +165,16 @@ new class extends Component {
 
             <flux:field>
                 <flux:label class="text-white">{{ __('Payment Method') }}</flux:label>
-                <flux:select wire:model="payment_method">
+                <flux:select wire:model="payment_method_id">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
                     </flux:select.option>
-                    @foreach (PaymentMethodsEnum::cases() as $paymentMethod)
-                        <flux:select.option value="{{ $paymentMethod->value }}">{{ $paymentMethod->getLabel() }}
+                    @foreach (PaymentMethod::active()->get() as $paymentMethod)
+                        <flux:select.option value="{{ $paymentMethod->id }}">{{ $paymentMethod->name }}
                         </flux:select.option>
                     @endforeach
                 </flux:select>
-                <flux:error name="payment_method" />
+                <flux:error name="payment_method_id" />
             </flux:field>
 
             <flux:field variant="inline">

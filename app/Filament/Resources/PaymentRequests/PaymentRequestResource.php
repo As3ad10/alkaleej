@@ -9,6 +9,7 @@ use App\Filament\Resources\PaymentRequests\Pages\ListPaymentRequests;
 use App\Filament\Resources\PaymentRequests\Schemas\PaymentRequestForm;
 use App\Filament\Resources\PaymentRequests\Tables\PaymentRequestsTable;
 use App\Models\PaymentRequest;
+use App\Models\PaymentRequestStatus;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -38,12 +39,12 @@ class PaymentRequestResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return PaymentRequest::where('status', PaymentRequestStatusEnum::NEW)->count();
+        return PaymentRequest::where('payment_request_status_id', 1)->count();
     }
 
     public static function getNavigationBadgeColor(): string
     {
-        return PaymentRequest::where('status', PaymentRequestStatusEnum::NEW)->count() > 0 ? 'warning' : 'gray';
+        return PaymentRequest::where('payment_request_status_id', 1)->count() > 0 ? 'warning' : 'gray';
     }
 
     public static function getNavigationGroup(): string|UnitEnum|null

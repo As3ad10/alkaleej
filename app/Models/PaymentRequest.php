@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\PaymentMethodsEnum;
-use App\Enums\PaymentRequestStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class PaymentRequest extends Model
@@ -16,13 +14,8 @@ class PaymentRequest extends Model
         'fullname',
         'id_number',
         'phone_number',
-        'payment_method',
-        'status',
-    ];
-
-    protected $casts = [
-        'status' => PaymentRequestStatusEnum::class,
-        'payment_method' => PaymentMethodsEnum::class,
+        'payment_method_id',
+        'payment_request_status_id',
     ];
 
     public function course()
@@ -33,5 +26,15 @@ class PaymentRequest extends Model
     public function institution()
     {
         return $this->belongsTo(Institution::class);
+    }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function paymentRequestStatus()
+    {
+        return $this->belongsTo(PaymentRequestStatus::class);
     }
 }

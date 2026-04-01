@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('id_number');
             $table->string('phone_number');
-            $table->string('payment_method');
-            $table->string('status')->default('new');
+            $table->foreignId('payment_method_id')->constrained('payment_methods')->onDelete('cascade');
+            $table->foreignId('payment_request_status_id')->constrained('payment_request_statuses')->onDelete('cascade')->default(1);
             $table->timestamps();
         });
     }

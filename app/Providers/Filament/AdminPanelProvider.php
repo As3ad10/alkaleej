@@ -48,7 +48,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                PaymentRequestsStatsOverview::class,
+                //
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -67,6 +67,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 __('Basic'),
                 __('Advanced'),
+                __('Settings'),
             ]);
     }
 }
