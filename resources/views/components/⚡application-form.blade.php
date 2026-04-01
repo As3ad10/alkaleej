@@ -159,8 +159,9 @@ new class extends Component {
                         {{ __('Select option') }}
                     </flux:select.option>
                     @foreach ($courses as $course)
-                        <flux:select.option value="{{ $course->id }}">{{ $course->name }} ({{ $course->price }}
-                            {{ __('SAR') }})</flux:select.option>
+                        <flux:select.option value="{{ $course->id }}">{{ $course->name }}
+                            ({{ $course->price > 0 ? $course->price . ' ' . __('SAR') : '' }})
+                        </flux:select.option>
                     @endforeach
                 </flux:select>
                 <flux:error name="course_id" />
