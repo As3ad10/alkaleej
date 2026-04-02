@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\InstitutionAttributeTypeEnum;
+use App\Jobs\SendWhatsappTextJob;
 use App\Models\CertificateRequest;
 use App\Models\Course;
 use App\Models\Institution;
