@@ -77,7 +77,7 @@ class UserResource extends Resource
                     ->searchable(),
                 TextColumn::make('role')
                     ->label(__('Role'))
-                    ->state(fn(User $record): string => $record->getRoleNames()->first()),
+                    ->state(fn(User $record): string => $record->getRoleNames()->first() ?? ''),
                 TextColumn::make('created_at')
                     ->label(__('Created at'))
                     ->dateTime()
@@ -89,11 +89,6 @@ class UserResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
