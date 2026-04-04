@@ -2,32 +2,44 @@
     {{-- HERO SECTION --}}
     <section
         class="relative flex min-h-screen items-center justify-center text-white before:absolute before:inset-0 before:z-0 before:bg-black/50"
-        style="background-image: url('https://alkhaleej.com.sa/wp-content/uploads/2024/02/cover-12-min.png'); background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-attachment: fixed;">
+        style="background-image: url('https://images.pexels.com/photos/8500417/pexels-photo-8500417.jpeg?cs=srgb&dl=pexels-rdne-8500417.jpg&fm=jpg&w=1280&h=853'); background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="wrapper relative z-10 mt-36 flex max-w-4xl flex-col justify-center gap-12">
             <h2 class="text-center text-3xl font-bold text-white">
-                اصدار مشهد قبول
+                نموذج التسجيل الخاص بمعهد المسار الاحترافي
             </h2>
             <div class="text-center">
-                <p>هذا النموذج يتيـح لـ معهد الخليج للتدريب والتعليم، أحد فروع شركة الخليج للتدريب والتعليم، والمعتمد من
-                    الجهات الرسمية.</p>
+                <p>
+                    يُتيح معهد المسار الاحترافي، المعتمد من الجهات الرسمية، للمتدربين في مختلف القطاعات الاستفادة من
+                    خدماتنا التدريبية المتخصصة بكل سهولة ويسر.
+                </p>
 
-                <p><strong>هدف النموذج:</strong></p>
-                <ol>
-                    <li>تسهيل عملية استقبال الطلبات - لموظفي القطاع العسكري</li>
-                    <li>رفع جودة الخدمة المقدمة للعسكريين، في قطاعات "الدفاع الجوي - القوات البرية - القوات الجوية"</li>
-                    <li>تسريع إجراءات اصدار الخطابات او التسجيل في الدورات.</li>
-                </ol>
+                <h3>هدف النموذج:</h3>
 
-                <p><strong>لضمان الموثوقية:</strong></p>
-                <ol>
-                    <li>الموظف المسؤول: [سالم الكثيري]</li>
-                    <li>البريد الإلكتروني الرسمي: [<a
-                            href="mailto:salem.alkatheri@newhorizons.com.sa">salem.alkatheri@newhorizons.com.sa</a>]
-                    </li>
-                    <li>رقم التواصل المباشر واتساب: [0500303750]</li>
-                </ol>
+                <ul>
+                    <li>تسهيل عملية استقبال الطلبات لموظفي القطاعات المختلفة.</li>
+                    <li>رفع جودة الخدمة المقدمة للمتدربين في المجالات الأكاديمية والتدريبية المتنوعة.</li>
+                    <li>تسريع إجراءات التسجيل في الدورات التدريبية أو إصدار الخطابات اللازمة.</li>
+                </ul>
 
-                <p>لأي استفسار أو دعم، يرجى التواصل عبر البيانات أعلاه.</p>
+                <h3>لضمان الموثوقية:</h3>
+
+                <p>الموظف المسؤول: <strong>سالم الكثيري</strong></p>
+
+                <p>البريد الإلكتروني الرسمي:
+                    <a href="mailto:salem.alkatheri@newhorizons.com.sa">
+                        salem.alkatheri@newhorizons.com.sa
+                    </a>
+                </p>
+
+                <p>رقم التواصل المباشر عبر واتساب:
+                    <a href="https://wa.me/966500303750">
+                        0500303750
+                    </a>
+                </p>
+
+                <p>
+                    لأي استفسار أو دعم، يرجى التواصل معنا عبر البيانات المذكورة أعلاه.
+                </p>
             </div>
             <div>
                 <livewire:application-form />

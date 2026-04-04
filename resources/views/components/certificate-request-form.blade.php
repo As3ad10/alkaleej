@@ -86,25 +86,25 @@ new class extends Component {
     @else
         <form wire:submit="submit" class="flex flex-col gap-4">
             <flux:field>
-                <flux:label>{{ __('Fullname') }}</flux:label>
+                <flux:label class="text-white">{{ __('Fullname') }}</flux:label>
                 <flux:input wire:model="fullname" />
                 <flux:error name="fullname" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('ID number') }}</flux:label>
+                <flux:label class="text-white">{{ __('ID number') }}</flux:label>
                 <flux:input wire:model="id_number" />
                 <flux:error name="id_number" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Phone number') }}</flux:label>
+                <flux:label class="text-white">{{ __('Phone number') }}</flux:label>
                 <flux:input type="tel" wire:model="phone_number" placeholder="05XXXXXXXX" />
                 <flux:error name="phone_number" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Course') }}</flux:label>
+                <flux:label class="text-white">{{ __('Course') }}</flux:label>
                 <flux:select wire:model.live="course_id">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
@@ -118,13 +118,13 @@ new class extends Component {
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Course period') }}</flux:label>
+                <flux:label class="text-white">{{ __('Course period') }}</flux:label>
                 <flux:input wire:model="period" />
                 <flux:error name="period" />
             </flux:field>
 
             <flux:field>
-                <flux:label>{{ __('Institutions') }}</flux:label>
+                <flux:label class="text-white">{{ __('Institutions') }}</flux:label>
                 <flux:select wire:model.live="institution_id">
                     <flux:select.option value="" selected>
                         {{ __('Select option') }}
@@ -139,7 +139,7 @@ new class extends Component {
 
             @if ($institution_id && $this->selectedInstitution)
                 <flux:field>
-                    <flux:label>{{ __('Job title') }}</flux:label>
+                    <flux:label class="text-white">{{ __('Job title') }}</flux:label>
                     <flux:select wire:model="title">
                         <flux:select.option value="" selected>
                             {{ __('Select option') }}

@@ -33,13 +33,13 @@
                 <flux:navbar.item href="{{ route('payment-request') }}"> <span
                         class="text-white">{{ __('Payment Request') }}</span>
                 </flux:navbar.item>
-                <flux:navbar.item icon:trailing="arrow-up-left"
+                {{-- <flux:navbar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank" class="text-white">
                     <span class="text-white">{{ __('About') }}</span>
                 </flux:navbar.item>
                 <flux:navbar.item icon:trailing="arrow-up-left" href="https://alkhaleej.com.sa/contactus-ar/"
                     target="_blank" class="text-white"><span class="text-white">{{ __('Contact') }}</span>
-                </flux:navbar.item>
+                </flux:navbar.item> --}}
             </flux:navbar>
         </flux:header>
 
@@ -58,14 +58,14 @@
                 </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('payment-request') }}"> {{ __('Payment Request') }}
                 </flux:sidebar.item>
-                <flux:sidebar.item icon:trailing="arrow-up-left"
+                {{-- <flux:sidebar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank">
                     {{ __('About') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item icon:trailing="arrow-up-left" href="https://alkhaleej.com.sa/contactus-ar/"
                     target="_blank">
                     {{ __('Contact') }}
-                </flux:sidebar.item>
+                </flux:sidebar.item> --}}
             </flux:sidebar.nav>
         </flux:sidebar>
     </header>

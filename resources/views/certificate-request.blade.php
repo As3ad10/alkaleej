@@ -2,13 +2,14 @@
     {{-- HERO SECTION --}}
     <section
         class="relative flex min-h-screen items-center justify-center text-white before:absolute before:inset-0 before:z-0 before:bg-black/50"
-        style="background-image: url('https://alkhaleej.com.sa/wp-content/uploads/2024/02/cover-12-min.png'); background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-attachment: fixed;">
+        style="background-image: url('https://images.pexels.com/photos/8500417/pexels-photo-8500417.jpeg?cs=srgb&dl=pexels-rdne-8500417.jpg&fm=jpg&w=1280&h=853'); background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="wrapper relative z-10 mt-36 flex max-w-4xl flex-col justify-center gap-12">
             <h1 class="text-center text-4xl font-bold text-white">
                 طلب اصدار شهادة
             </h1>
             <div class="text-center">
-                <p>يتيح هذا النموذج لموظفي القطاع العسكري طلب اصدار شهادة من معهد الخليج للتدريب والتعليم.</p>
+                <p>يتيح هذا النموذج لمتدربي معهد المسار الاحترافي طلب إصدار شهادة معتمدة بعد إتمام البرامج التدريبية
+                    بنجاح.</p>
             </div>
             <div>
                 <livewire:certificate-request-form />
