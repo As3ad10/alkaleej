@@ -33,7 +33,9 @@
                             طلب اصدار مشهد قبول
                         </h3>
                         <p class="text-muted-foreground-1 mt-2">
-                            يتيح هذا النموذج لموظفي القطاع العسكري طلب اصدار مشهد قبول من معهد الخليج للتدريب والتعليم.
+                            يتيح هذا النموذج لمتدربي معهد المسار الاحترافي طلب تسجيله في الدورات التدريبية التي تمت
+                            الموافقة
+                            عليها مسبقًا.
                         </p>
                         <a class="text-accent hover:text-accent-hover focus:outline-hidden focus:text-accent-focus mt-3 inline-flex items-center gap-x-1 rounded-lg border border-transparent font-semibold decoration-2 hover:underline focus:underline disabled:pointer-events-none disabled:opacity-50"
                             href="{{ route('application-request') }}">
@@ -56,7 +58,9 @@
                             طلب اصدار شهادة
                         </h3>
                         <p class="text-muted-foreground-1 mt-2">
-                            يتيح هذا النموذج لموظفي القطاع العسكري طلب اصدار شهادة من معهد الخليج للتدريب والتعليم.
+                            يتيح هذا النموذج لمتدربي معهد المسار الاحترافي طلب إصدار شهادة معتمدة بعد إتمام البرامج
+                            التدريبية
+                            بنجاح.
                         </p>
                         <a class="text-accent hover:text-accent-hover focus:outline-hidden focus:text-accent-focus mt-3 inline-flex items-center gap-x-1 rounded-lg border border-transparent font-semibold decoration-2 hover:underline focus:underline disabled:pointer-events-none disabled:opacity-50"
                             href="{{ route('certificate-request') }}">
@@ -79,7 +83,8 @@
                             طلب استكمال الدفع
                         </h3>
                         <p class="text-muted-foreground-1 mt-2">
-                            يتيح هذا النموذج لموظفي القطاع العسكري طلب استكمال الدفع للدورات التدريبية من معهد الخليج
+                            يتيح هذا النموذج لمتدربي معهد المسار الاحترافي طلب استكمال الدفع للدورات التدريبية التي تمت
+                            الموافقة
                             للتدريب والتعليم.
                         </p>
                         <a class="text-accent hover:text-accent-hover focus:outline-hidden focus:text-accent-focus mt-3 inline-flex items-center gap-x-1 rounded-lg border border-transparent font-semibold decoration-2 hover:underline focus:underline disabled:pointer-events-none disabled:opacity-50"
