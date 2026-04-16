@@ -18,13 +18,13 @@
     <header class="absolute left-0 right-0 top-0 z-50 py-6">
         <flux:header class="z-50 mx-auto max-w-7xl">
             <flux:sidebar.toggle class="bg-white lg:hidden" icon="bars-2" inset="left" />
-            <a class="hidden lg:block" href="/"><img src="{{ asset('logo-white.png') }}" alt="logo"
-                    class="h-8 lg:h-16"></a>
+            {{-- <a class="hidden lg:block" href="/"><img src="{{ asset('logo-white.png') }}" alt="logo"
+                    class="h-8 lg:h-16"></a> --}}
             <flux:spacer />
             <flux:navbar class="-mb-px max-lg:hidden">
                 <flux:navbar.item href="{{ route('welcome') }}"> <span class="text-white">{{ __('Home') }}</span>
                 </flux:navbar.item>
-                <flux:navbar.item href="{{ route('application-request') }}"> <span
+                {{-- <flux:navbar.item href="{{ route('application-request') }}"> <span
                         class="text-white">{{ __('Application Request') }}</span>
                 </flux:navbar.item>
                 <flux:navbar.item href="{{ route('certificate-request') }}"> <span
@@ -32,7 +32,7 @@
                 </flux:navbar.item>
                 <flux:navbar.item href="{{ route('payment-request') }}"> <span
                         class="text-white">{{ __('Payment Request') }}</span>
-                </flux:navbar.item>
+                </flux:navbar.item> --}}
                 {{-- <flux:navbar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank" class="text-white">
                     <span class="text-white">{{ __('About') }}</span>
@@ -45,19 +45,19 @@
 
         <flux:sidebar sticky collapsible="mobile" class="z-50 border-r border-zinc-200 bg-zinc-50 lg:hidden">
             <flux:sidebar.header>
-                <a href="/" class="h-16"><img src="{{ asset('logo.png') }}" alt="logo"
-                        class="object-contain object-center"></a>
+                {{-- <a href="/" class="h-16"><img src="{{ asset('logo.png') }}" alt="logo"
+                        class="object-contain object-center"></a> --}}
                 <flux:sidebar.collapse
                     class="in-data-flux-sidebar-on-desktop:not-in-data-flux-sidebar-collapsed-desktop:-mr-2" />
             </flux:sidebar.header>
             <flux:sidebar.nav>
                 <flux:sidebar.item href="{{ route('welcome') }}"> {{ __('Home') }} </flux:sidebar.item>
-                <flux:sidebar.item href="{{ route('application-request') }}"> {{ __('Application Request') }}
+                {{-- <flux:sidebar.item href="{{ route('application-request') }}"> {{ __('Application Request') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('certificate-request') }}"> {{ __('Certificate Request') }}
                 </flux:sidebar.item>
                 <flux:sidebar.item href="{{ route('payment-request') }}"> {{ __('Payment Request') }}
-                </flux:sidebar.item>
+                </flux:sidebar.item> --}}
                 {{-- <flux:sidebar.item icon:trailing="arrow-up-left"
                     href="https://alkhaleej.com.sa/%d9%85%d9%86-%d9%86%d8%ad%d9%86/" target="_blank">
                     {{ __('About') }}
