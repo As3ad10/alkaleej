@@ -39,9 +39,9 @@ class AdminPanelProvider extends PanelProvider
                 url: asset('css/fonts.css'),
                 provider: LocalFontProvider::class,
             )
-            ->brandLogo(asset('logo.png'))
-            ->brandLogoHeight('3rem')
-            ->favicon(asset('favicon.png'))
+            // ->brandLogo(asset('logo.png'))
+            // ->brandLogoHeight('3rem')
+            // ->favicon(asset('favicon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

@@ -2,17 +2,11 @@
 
 namespace App\Filament\Resources\PaymentRequests;
 
-use App\Enums\PaymentRequestStatusEnum;
-use App\Filament\Resources\PaymentRequests\Pages\CreatePaymentRequest;
-use App\Filament\Resources\PaymentRequests\Pages\EditPaymentRequest;
 use App\Filament\Resources\PaymentRequests\Pages\ListPaymentRequests;
-use App\Filament\Resources\PaymentRequests\Schemas\PaymentRequestForm;
 use App\Filament\Resources\PaymentRequests\Tables\PaymentRequestsTable;
 use App\Models\PaymentRequest;
-use App\Models\PaymentRequestStatus;
 use BackedEnum;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
@@ -24,6 +18,8 @@ class PaymentRequestResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'fullname';
+
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?int $navigationSort = 1;
 
