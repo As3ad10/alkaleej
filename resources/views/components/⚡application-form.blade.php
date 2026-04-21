@@ -1,12 +1,14 @@
 <?php
 
-use App\Models\Course;
-use Livewire\Component;
+use App\Enums\InstitutionAttributeTypeEnum;
 use App\Models\Application;
+use App\Models\Course;
 use App\Models\Institution;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use App\Enums\InstitutionAttributeTypeEnum;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Component;
+use Panakour\FilamentFlatPage\Facades\FilamentFlatPage;
 
 new class extends Component {
     public string $fullname = '';
@@ -108,19 +110,22 @@ new class extends Component {
 
             $application->update(['pdf' => $this->pdf]);
 
-            if (app()->environment('production')) {
+            // Storage::disk('public')->download(str_replace(env('APP_URL') . '/storage/', __DIR__ . '/../../../storage/', $this->pdf));
+
+            if (app()->environment('production') && FilamentFlatPage::get('settings.json', 'toggle_bot')) {
                 \App\Jobs\SendWhatsappDocumentJob::dispatch(
                     $application->phone_number,
                     $this->pdf,
-                    '"موافقتك جاهزة، وإذا وصلت الموافقة النهائية، تواصل معي علشان نكمل باقي الإجراءات.
+                    "مرحبا {$application->fulname}
+                    موافقتك جاهزة، وإذا وصلت الموافقة النهائية، تواصل معي علشان نكمل باقي الإجراءات.
                         وسعدت بخدمتك، وأتمنى لك التوفيق!
-                        أخوكم سالم الكثيري"',
+                        أخوكم سالم الكثيري",
                 );
             }
 
             $this->isSubmitted = true;
         } catch (\Throwable $th) {
-            Log::error('form not submitted: ' . $th->message);
+            Log::error('form not submitted: ' . $th->getMessage());
         }
     }
 };
