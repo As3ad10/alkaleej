@@ -81,5 +81,7 @@
     "Payment Request Status Color": "اللون",
     "Payment Request Status Status": "تنشيط؟",
     "Settings": "الإعدادات",
-    "Role": "الدور"
+    "Role": "الدور",
+    "General Settings": "الإعدادات العامة",
+    "Bot Toggle": "تفعيل/تعطيل البوت"
 }

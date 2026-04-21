@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "078560e74cf6e0c203c0513d89d4eec1",
+    "content-hash": "9e666d3d3f956d8e9932f0d7db3e29d9",
     "packages": [
         {
             "name": "alkoumi/laravel-hijri-date",
@@ -5191,6 +5191,163 @@
             "time": "2025-09-03T16:03:54+00:00"
         },
         {
+            "name": "outerweb/filament-translatable-fields",
+            "version": "v4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/outer-web/filament-translatable-fields.git",
+                "reference": "9af311a2b59e083aa36ab48035972db445a5fc89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/outer-web/filament-translatable-fields/zipball/9af311a2b59e083aa36ab48035972db445a5fc89",
+                "reference": "9af311a2b59e083aa36ab48035972db445a5fc89",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0|^5.0",
+                "php": "^8.4",
+                "spatie/laravel-package-tools": "^1.16",
+                "spatie/laravel-translatable": "^6.12"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.8",
+                "orchestra/testbench": "^9.0.0||^10.0.0||^11.0.0",
+                "pestphp/pest": "^4.0",
+                "pestphp/pest-plugin-arch": "^4.0",
+                "pestphp/pest-plugin-laravel": "^4.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Outerweb\\FilamentTranslatableFields\\FilamentTranslatableFieldsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Outerweb\\FilamentTranslatableFields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Outerweb",
+                    "email": "info@outerweb.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Filament integration for spatie/laravel-translatable",
+            "homepage": "https://github.com/outerweb/filament-translatable-fields",
+            "keywords": [
+                "Outerweb",
+                "filament-translatable-fields",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/outerweb/filament-translatable-fields/issues",
+                "source": "https://github.com/outerweb/filament-translatable-fields"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/outer-web",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-17T19:36:53+00:00"
+        },
+        {
+            "name": "panakour/filament-flat-page",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/panakour/filament-flat-page.git",
+                "reference": "9f4fb06037a06ccf9bedb8293e957fc89c5eefe5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/panakour/filament-flat-page/zipball/9f4fb06037a06ccf9bedb8293e957fc89c5eefe5",
+                "reference": "9f4fb06037a06ccf9bedb8293e957fc89c5eefe5",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^5.0",
+                "outerweb/filament-translatable-fields": "^4.1",
+                "php": "^8.4",
+                "spatie/laravel-package-tools": "^1.15.0",
+                "spatie/valuestore": "^1.3"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^8.0",
+                "orchestra/testbench": "^10.0",
+                "pestphp/pest": "^4.1",
+                "pestphp/pest-plugin-arch": "^v4.0.0",
+                "pestphp/pest-plugin-laravel": "^v4.0.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentFlatPage": "Panakour\\FilamentFlatPage\\Facades\\FilamentFlatPage"
+                    },
+                    "providers": [
+                        "Panakour\\FilamentFlatPage\\FilamentFlatPageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Panakour\\FilamentFlatPage\\": "src/",
+                    "Panakour\\FilamentFlatPage\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Panagiotis Koursaris",
+                    "email": "panakourweb@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filament-flat-page",
+            "homepage": "https://github.com/panakour/filament-flat-page",
+            "keywords": [
+                "filament-flat-page",
+                "filamentphp",
+                "laravel",
+                "panakour"
+            ],
+            "support": {
+                "issues": "https://github.com/panakour/filament-flat-page/issues",
+                "source": "https://github.com/panakour/filament-flat-page"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/panakour",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-07T17:11:30+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v3.1.3",
             "source": {
@@ -6803,6 +6960,89 @@
             "time": "2026-03-17T22:57:08+00:00"
         },
         {
+            "name": "spatie/laravel-translatable",
+            "version": "6.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-translatable.git",
+                "reference": "8fc0c1dd5ab4013c27a28e5d5590f2ce849bd349"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-translatable/zipball/8fc0c1dd5ab4013c27a28e5d5590f2ce849bd349",
+                "reference": "8fc0c1dd5ab4013c27a28e5d5590f2ce849bd349",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.3",
+                "spatie/laravel-package-tools": "^1.92.7"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.90",
+                "mockery/mockery": "^1.6.12",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^4.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "aliases": {
+                    "Translatable": "Spatie\\Translatable\\Facades\\Translatable"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Translatable\\TranslatableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Translatable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A trait to make an Eloquent model hold translations",
+            "homepage": "https://github.com/spatie/laravel-translatable",
+            "keywords": [
+                "eloquent",
+                "i8n",
+                "laravel-translatable",
+                "model",
+                "multilingual",
+                "spatie",
+                "translate"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-translatable/issues",
+                "source": "https://github.com/spatie/laravel-translatable/tree/6.12.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-11-24T15:57:48+00:00"
+        },
+        {
             "name": "spatie/shiki-php",
             "version": "2.3.3",
             "source": {
@@ -6866,6 +7106,73 @@
                 }
             ],
             "time": "2026-02-01T09:30:04+00:00"
+        },
+        {
+            "name": "spatie/valuestore",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/valuestore.git",
+                "reference": "e9134c30faaf820e1f04f1dd27542b72b8effb09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/valuestore/zipball/e9134c30faaf820e1f04f1dd27542b72b8effb09",
+                "reference": "e9134c30faaf820e1f04f1dd27542b72b8effb09",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0|^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Valuestore\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jolita Grazyte",
+                    "email": "jolita@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily store some values",
+            "homepage": "https://github.com/spatie/valuestore",
+            "keywords": [
+                "json",
+                "spatie",
+                "valuestore"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/valuestore/issues",
+                "source": "https://github.com/spatie/valuestore/tree/1.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-14T13:01:27+00:00"
         },
         {
             "name": "symfony/clock",
