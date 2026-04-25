@@ -35,6 +35,9 @@ class ApplicationsTable
                 TextColumn::make('phone_number')
                     ->label(__("Phone number"))
                     ->searchable(),
+                TextColumn::make('area')
+                    ->label(__("Area (optional)"))
+                    ->searchable(),
                 TextColumn::make('institution_attributes')
                     ->label(__("Additional info")),
                 TextColumn::make('pdf')

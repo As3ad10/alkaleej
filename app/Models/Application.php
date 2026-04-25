@@ -14,6 +14,7 @@ class Application extends Model
         'fullname',
         'id_number',
         'phone_number',
+        'area',
         'institution_attributes',
         'pdf',
     ];

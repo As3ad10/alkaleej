@@ -25,6 +25,9 @@ class ApplicationInfolist
                     ->label(__("ID number")),
                 TextEntry::make('phone_number')
                     ->label(__("Phone number")),
+                TextEntry::make('area')
+                    ->label(__("Area (optional)"))
+                    ->placeholder('-'),
                 TextEntry::make('institution_attributes')
                     ->label(__("Additional info"))
                     ->placeholder('-')

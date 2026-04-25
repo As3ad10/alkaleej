@@ -18,6 +18,7 @@ new class extends Component {
     public ?string $period = null;
     public ?int $institution_id = null;
     public ?string $title = null;
+    public ?string $area = null;
 
     public array $institution_attributes = [];
     public bool $isSubmitted = false;
@@ -77,6 +78,7 @@ new class extends Component {
             'phone_number' => 'required|string|regex:/^05[0-9]{8}$/',
             'course_id' => 'required|integer',
             'institution_id' => 'required|integer',
+            'area' => 'nullable|string|max:255',
         ];
 
         if ($this->course_id && count($this->coursePeriods) > 0) {
@@ -106,6 +108,7 @@ new class extends Component {
                 'course' => $application->course->name,
                 'title' => $application->title,
                 'greeting' => $application->institution->pdf_text,
+                'area' => $application->area,
             ]);
 
             $application->update(['pdf' => $this->pdf]);
@@ -116,7 +119,7 @@ new class extends Component {
                 \App\Jobs\SendWhatsappDocumentJob::dispatch(
                     $application->phone_number,
                     $this->pdf,
-                    "مرحبا {$application->fulname}
+                    "مرحبا {$application->fullname}
                     موافقتك جاهزة، وإذا وصلت الموافقة النهائية، تواصل معي علشان نكمل باقي الإجراءات.
                         وسعدت بخدمتك، وأتمنى لك التوفيق!
                         أخوكم سالم الكثيري",
@@ -256,6 +259,12 @@ new class extends Component {
                     </flux:field>
                 @endforeach
             @endif
+
+            <flux:field>
+                <flux:label class="text-white">{{ __('Area (optional)') }}</flux:label>
+                <flux:input wire:model="area" />
+                <flux:error name="area" />
+            </flux:field>
             <flux:button type="submit" variant="primary" color="accent">
                 ارسال
             </flux:button>
