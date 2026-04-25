@@ -18,6 +18,7 @@ new class extends Component {
     public ?string $period = null;
     public ?int $institution_id = null;
     public ?string $title = null;
+    public ?string $custom_title = null;
     public ?string $area = null;
 
     public array $institution_attributes = [];
@@ -52,6 +53,7 @@ new class extends Component {
     public function updatedInstitutionId($value)
     {
         $this->institution_attributes = [];
+        $this->custom_title = null;
     }
 
     public function getSelectedInstitutionProperty(): ?Institution
@@ -66,6 +68,11 @@ new class extends Component {
     public function getinstitutionAttributesSchemaProperty(): \Illuminate\Support\Collection
     {
         return $this->selectedInstitution?->attributes?->values() ?? collect();
+    }
+
+    public function getShowCustomTitleProperty()
+    {
+        return $this->title === 'Other';
     }
 
     public function submit()
@@ -86,7 +93,11 @@ new class extends Component {
         }
 
         if ($this->institution_id && $this->selectedInstitution) {
-            $rules['title'] = 'required|string';
+            if ($this->showCustomTitle) {
+                $rules['custom_title'] = 'required|string';
+            } else {
+                $rules['title'] = 'required|string';
+            }
         }
 
         foreach ($this->institutionAttributesSchema as $attribute) {
@@ -97,6 +108,13 @@ new class extends Component {
             $rules["institution_attributes.{$attribute->name}"] = 'required';
         }
         $data = $this->validate($rules);
+
+        if ($this->showCustomTitle) {
+            $this->title = $this->custom_title;
+            $data['title'] = $this->custom_title;
+        } else {
+            $data['title'] = $this->title;
+        }
 
         try {
             $application = Application::create($data);
@@ -206,7 +224,7 @@ new class extends Component {
             @if ($institution_id && $this->selectedInstitution)
                 <flux:field>
                     <flux:label class="text-white">{{ __('Job title') }}</flux:label>
-                    <flux:select wire:model="title">
+                    <flux:select wire:model.live="title">
                         <flux:select.option value="" selected>
                             {{ __('Select option') }}
                         </flux:select.option>
@@ -214,9 +232,17 @@ new class extends Component {
                             <flux:select.option value="{{ $title }}">{{ $title }}
                             </flux:select.option>
                         @endforeach
+                        <flux:select.option value="Other">{{ __('Others') }}</flux:select.option>
                     </flux:select>
                     <flux:error name="title" />
                 </flux:field>
+                @if ($this->showCustomTitle)
+                    <flux:field>
+                        <flux:label class="text-white">{{ __('Custom Job Title') }}</flux:label>
+                        <flux:input wire:model="custom_title" placeholder="{{ __('Enter custom title') }}" />
+                        <flux:error name="custom_title" />
+                    </flux:field>
+                @endif
             @endif
 
             @if ($institution_id && $this->institutionAttributesSchema->count() > 0)

@@ -86,7 +86,9 @@
                 </div>
 
                 <div>على أن يكون ذلك حضورياً في الفترة المسائية</div>
-                <div>وذلك في منطقة <strong>{{ $area }}</strong></div>
+                @if ($area)
+                    <div>وذلك في منطقة <strong>{{ $area }}</strong></div>
+                @endif
 
                 <div class="flex gap-1">
                     علماً بان الدورة ستكون خلال الفترة:
