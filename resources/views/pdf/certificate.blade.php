@@ -85,9 +85,10 @@
                     {{ $course }}
                 </div>
 
-                <div>على أن يكون ذلك حضورياً في الفترة المسائية</div>
+                <div>على أن تكون ذلك حضورياً في الفترة المسائية</div>
                 @if ($area)
-                    <div>وذلك في منطقة <strong>{{ $area }}</strong></div>
+                    <br>
+                    <div>{{ $area }}</strong>}}</div>
                 @endif
 
                 <div class="flex gap-1">
