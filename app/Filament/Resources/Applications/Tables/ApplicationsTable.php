@@ -3,13 +3,11 @@
 namespace App\Filament\Resources\Applications\Tables;
 
 use Alkoumi\LaravelHijriDate\Hijri;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
 
 class ApplicationsTable
 {
@@ -53,6 +51,7 @@ class ApplicationsTable
             ])
             ->recordActions([
                 ViewAction::make(),
+                DeleteAction::make(),
             ])
             ->headerActions([
                 ExportAction::make()
